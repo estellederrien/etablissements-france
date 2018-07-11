@@ -1,0 +1,205 @@
+
+
+<html >
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exo cloudant</title>
+		<!------------------------------------------------------------ CHARGEMENT DES LIBRAIRIES ------------------------------------------------>
+		<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet" href="style.css" /> 
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="//cdn.jsdelivr.net/npm/pouchdb@6.4.3/dist/pouchdb.min.js"></script>
+		<script src="js/pouchdb.find.js"></script>
+		
+		<!-- CONNEXION A GOOGLE MAP  -->
+		<!-- 		<script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script> -->
+		<script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyApCxErFUFFHltBkAyd7CxXdFEyue3fAb0" type="text/javascript" ></script>
+		<script src="js/jquery.googlemap.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+		
+		<!-- JQUERY UI -->
+		<script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+		<script src="js/jquery-ui-1.12.1/jquery-ui.css"></script>
+		
+
+		<!-- POUCHDB AUTH -->
+		<script src="js/pouchdb.authentication.min.js"></script>
+
+		<!------------------------------------------------------- FIN DE CHARGEMENT DES LIBRAIRIES ------------------------------------------------->
+	</head>
+	<!-- La page HTML générale -->
+	<body style="background-color:tan" >
+	<!-- As a heading -->
+		<nav class="navbar navbar-light bg-light">
+		  <span class="navbar-brand mb-0 h1"><img src="logo.jpg" style="width:50px"></img> Mon établissement</span>
+		</nav>
+	
+		<div id="app"  >
+		<div class="row" style="margin-top:10px; " >
+			<div class="card col-md-4"  id="div1">
+				<div class="card-header">Filtres </div>
+				<div class="card-body cardspe"   >
+					<div >
+						<div class="form-group">
+							<label for="example-text-input">Type Etablissement</label> <span class="tooltip" title="This is my span's tooltip message!">fezfezfezfz</span>
+							<select class="form-control" name="type_detablissement" id = "type_detablissement">
+								<option value="">Tous</option>
+								<option value="Collège">Collège</option>
+								<option value="Lycée">Lycée</option>
+								<option value="Centre national d'enseignement à distance">Centre national d'enseignement à distance</option>
+								<option value="Centre de formation d'apprentis">Centre de formation d'apprentis</option>
+								<option value="Maison familiale rurale">Maison familiale rurale</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input">Département</label>
+							<select class="form-control" name="dep" id = "dep">
+								<option value="">Tous</option>
+								<option value="00">(00) Hors France</option>
+								<option value="01">(01) Ain </option>
+								<option value="02">(02) Aisne </option>
+								<option value="03">(03) Allier </option>
+								<option value="04">(04) Alpes de Haute Provence </option>
+								<option value="05">(05) Hautes Alpes </option>
+								<option value="06">(06) Alpes Maritimes </option>
+								<option value="07">(07) Ardèche </option>
+								<option value="08">(08) Ardennes </option>
+								<option value="09">(09) Ariège </option>
+								<option value="10">(10) Aube </option>
+								<option value="11">(11) Aude </option>
+								<option value="12">(12) Aveyron </option>
+								<option value="13">(13) Bouches du Rhône </option>
+								<option value="14">(14) Calvados </option>
+								<option value="15">(15) Cantal </option>
+								<option value="16">(16) Charente </option>
+								<option value="17">(17) Charente Maritime </option>
+								<option value="18">(18) Cher </option>
+								<option value="19">(19) Corrèze </option>
+								<option value="2A">(2A) Corse du Sud </option>
+								<option value="2B">(2B) Haute-Corse </option>
+								<option value="21">(21) Côte d'Or </option>
+								<option value="22">(22) Côtes d'Armor </option>
+								<option value="23">(23) Creuse </option>
+								<option value="24">(24) Dordogne </option>
+								<option value="25">(25) Doubs </option
+									>
+								<option value="26">(26) Drôme </option>
+								<option value="27">(27) Eure </option>
+								<option value="28">(28) Eure et Loir </option>
+								<option value="29">(29) Finistère </option>
+								<option value="30">(30) Gard </option>
+								<option value="31">(31) Haute Garonne </option>
+								<option value="32">(32) Gers </option>
+								<option value="33">(33) Gironde </option>
+								<option value="34">(34) Hérault </option>
+								<option value="35">(35) Ille et Vilaine </option>
+								<option value="36">(36) Indre </option>
+								<option value="37">(37) Indre et Loire </option>
+								<option value="38">(38) Isère </option>
+								<option value="39">(39) Jura </option>
+								<option value="40">(40) Landes </option>
+								<option value="41">(41) Loir et Cher </option>
+								<option value="42">(42) Loire </option>
+								<option value="43">(43) Haute Loire </option>
+								<option value="44">(44) Loire Atlantique </option>
+								<option value="45">(45) Loiret </option>
+								<option value="46">(46) Lot </option>
+								<option value="47">(47) Lot et Garonne </option>
+								<option value="48">(48) Lozère </option>
+								<option value="49">(49) Maine et Loire </option>
+								<option value="50">(50) Manche </option>
+								<option value="51">(51) Marne </option>
+								<option value="52">(52) Haute Marne </option>
+								<option value="53">(53) Mayenne </option>
+								<option value="54">(54) Meurthe et Moselle </option>
+								<option value="55">(55) Meuse </option>
+								<option value="56">(56) Morbihan </option>
+								<option value="57">(57) Moselle </option>
+								<option value="58">(58) Nièvre </option>
+								<option value="59">(59) Nord </option>
+								<option value="60">(60) Oise </option>
+								<option value="61">(61) Orne </option>
+								<option value="62">(62) Pas de Calais </option>
+								<option value="63">(63) Puy de Dôme </option>
+								<option value="64">(64) Pyrénées Atlantiques </option>
+								<option value="65">(65) Hautes Pyrénées </option>
+								<option value="66">(66) Pyrénées Orientales </option>
+								<option value="67">(67) Bas Rhin </option>
+								<option value="68">(68) Haut Rhin </option>
+								<option value="69">(69) Rhône </option>
+								<option value="70">(70) Haute Saône </option>
+								<option value="71">(71) Saône et Loire </option>
+								<option value="72">(72) Sarthe </option>
+								<option value="73">(73) Savoie </option>
+								<option value="74">(74) Haute Savoie </option>
+								<option value="75">(75) Paris </option>
+								<option value="76">(76) Seine Maritime </option>
+								<option value="77">(77) Seine et Marne </option>
+								<option value="78">(78) Yvelines </option>
+								<option value="79">(79) Deux Sèvres </option>
+								<option value="80">(80) Somme </option>
+								<option value="81">(81) Tarn </option>
+								<option value="82">(82) Tarn et Garonne </option>
+								<option value="83">(83) Var </option>
+								<option value="84">(84) Vaucluse </option>
+								<option value="85">(85) Vendée </option>
+								<option value="86">(86) Vienne </option>
+								<option value="87">(87) Haute Vienne </option>
+								<option value="88">(88) Vosges </option>
+								<option value="89">(89) Yonne </option>
+								<option value="90">(90) Territoire de Belfort </option>
+								<option value="91">(91) Essonne </option>
+								<option value="92">(92) Hauts de Seine </option>
+								<option value="93">(93) Seine Saint Denis </option>
+								<option value="94">(94) Val de Marne </option>
+								<option value="95">(95) Val d'Oise </option>
+								<option value="971">(971) Guadeloupe </option>
+								<option value="972">(972) Martinique </option>
+								<option value="973">(973) Guyane </option>
+								<option value="974">(974) Réunion </option>
+								<option value="975">(975) Saint Pierre et Miquelon </option>
+								<option value="976">(976) Mayotte </option>
+							</select>
+						</div>
+					</div>
+					<label for="example-text-input">Carte</label>
+					<div id="map" style="width:100%; height:100%;"></div>
+				</div>
+				<div class="card-footer ">
+
+					<button onclick="trouver()" id="trouver" class="btn float-right btn-primary " title="test" >Recherche</button>
+					 <button  onclick="mapReduce()"class="btn float-left btn-primary"  >Map Reduce</button> 
+					<span><img id="loader" src ="loading_s2.gif" style="width:50px;"></img></span> 
+				</div>
+			</div>
+			<div class="card col-md-4 " >
+				<div class="card-header" >Les établissements <span id='etabHeader'></span> </div>
+				<div class="card-body cardspe" id="liste"  > Utilisez les filtres ...</div>
+				<div class="card-footer ">
+					
+				</div>
+			</div>
+			<div class="card col-md-4"  id="div1">
+				<div class="card-header">Détails</div>
+				<div class="card-body cardspe" id="detail"  > Cliquez sur un établissement dans la liste</div>
+				<div class="card-footer ">
+					<button onclick="valider()" class="btn float-right btn-primary"  >Valider</button>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+		
+		<div class="card col-md-12 " id="stats" >
+			<div class="card-header" >Statistiques graphiques <span id='etabHeader'></span> </div>
+			<div class="card-body cardspe"  > <canvas id="myChart"></canvas></div>
+			<div class="card-footer ">
+				
+			</div>
+		</div>
+		
+		</div>
+	</body>
+	<script src="app.js"></script>
+
