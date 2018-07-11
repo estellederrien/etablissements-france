@@ -1,26 +1,11 @@
 /* Plugger pouchDb à Cloudant */
-/* var db = new PouchDB('https://1c54473b-be6e-42d6-b914-d0ecae937981-bluemix:8eeedbe180c1ce90cdc3ae37b9e74af7368b21a37b531aae819929d3405c7d22@1c54473b-be6e-42d6-b914-d0ecae937981-bluemix.cloudant.com/etablissements');
- */
- 
-var  remoteDatabase = "https://1c54473b-be6e-42d6-b914-d0ecae937981-bluemix.cloudant.com/etablissements";
-var db = new PouchDB(remoteDatabase, {
-                auth: {
-                    username: "ocessientolessedupporten",
-                    password: "ba350a4ec17c3b0365d5743df8b6293ade938f3d"
-                },
-                skip_setup: true // without this I get the login popup!
-                // Why if I'm passing the auth params???
-            });
-
-
-
+var db = new PouchDB('https://1c54473b-be6e-42d6-b914-d0ecae937981-bluemix:8eeedbe180c1ce90cdc3ae37b9e74af7368b21a37b531aae819929d3405c7d22@1c54473b-be6e-42d6-b914-d0ecae937981-bluemix.cloudant.com/etablissements');
 
 /* le Loader Ajax */
 $("#loader").hide();
 
 /* Pas de stats au debut */
 $("#stats").hide();
-
 
 
 
