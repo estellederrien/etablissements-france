@@ -1,4 +1,4 @@
-# etablissement
+# Visionner les établissements français, à partir d'un CSV de gouv.fr 
 
 This is a couchDb PouchDb app.
 
